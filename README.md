@@ -1,4 +1,4 @@
-# chat_it
+# Chat It
 
 A simple texting application built with flutter
 
