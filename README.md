@@ -1,6 +1,6 @@
 # chat_it
 
-A new Flutter project.
+A simple texting application built with flutter
 
 ## Getting Started
 
