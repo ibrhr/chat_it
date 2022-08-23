@@ -8,6 +8,39 @@ import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 
 class ChatView extends GetView<ChatController> {
   const ChatView({Key? key}) : super(key: key);
+
+  void onLongPress(BuildContext context, types.Message message) {
+    Get.dialog(
+      AlertDialog(
+        content: const PrimaryText(
+          'Delete Message ?',
+          fontSize: 16,
+        ),
+        actionsAlignment: MainAxisAlignment.spaceAround,
+        actions: [
+          ElevatedButton(
+            onPressed: () {
+              FirebaseChatCore.instance
+                  .deleteMessage(controller.room!.id, message.id);
+              Get.back();
+            },
+            child: const PrimaryText(
+              'Yes',
+              fontSize: 14,
+            ),
+          ),
+          ElevatedButton(
+            onPressed: () => Get.back(),
+            child: const PrimaryText(
+              'No',
+              fontSize: 14,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final types.Room room = Get.arguments;
@@ -54,13 +87,14 @@ class ChatView extends GetView<ChatController> {
                   nextMessageInGroup: nextMessageInGroup,
                   child: child,
                 ),
+                onMessageLongPress: (context, message) =>
+                    onLongPress(context, message),
                 disableImageGallery: true,
                 messages: snapshot.data ?? [],
                 onAttachmentPressed: controller.handleAtachmentPressed,
                 onMessageTap: controller.handleMessageTap,
                 onPreviewDataFetched: controller.handlePreviewDataFetched,
-                onSendPressed: controller
-                    .handleSendPressed, //   showUserAvatars: true, //    showUserNames: true,
+                onSendPressed: controller.handleSendPressed,
                 emojiEnlargementBehavior: EmojiEnlargementBehavior.single,
                 user: controller.user,
               ),

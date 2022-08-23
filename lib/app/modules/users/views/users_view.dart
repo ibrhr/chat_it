@@ -50,7 +50,7 @@ class UserChat extends GetView<UsersController> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => controller.createChat(user),
+      onTap: () async => await controller.createChat(user),
       child: Container(
         margin: const EdgeInsets.all(8),
         child: Row(
@@ -62,9 +62,7 @@ class UserChat extends GetView<UsersController> {
                 user.imageUrl!,
               ),
             ),
-            const SizedBox(
-              width: 8,
-            ),
+            const SizedBox(width: 8),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

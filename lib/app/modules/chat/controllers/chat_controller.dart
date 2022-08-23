@@ -3,7 +3,6 @@ import 'package:better_open_file/better_open_file.dart';
 import 'package:chat_it/app/modules/auth/controllers/auth_controller.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/services.dart' show rootBundle;
 // ignore_for_file: depend_on_referenced_packages
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:flutter_firebase_chat_core/flutter_firebase_chat_core.dart';
@@ -94,6 +93,7 @@ class ChatController extends GetxController {
         );
 
         FirebaseChatCore.instance.sendMessage(message, room!.id);
+        await setLastMessage('Attachment');
         setAttachmentUploading(false);
       } finally {
         setAttachmentUploading(false);
@@ -133,6 +133,7 @@ class ChatController extends GetxController {
           message,
           room!.id,
         );
+        await setLastMessage('Attachment');
         setAttachmentUploading(false);
       } finally {
         setAttachmentUploading(false);
@@ -184,12 +185,12 @@ class ChatController extends GetxController {
     FirebaseChatCore.instance.updateMessage(updatedMessage, room!.id);
   }
 
-  void handleSendPressed(types.PartialText message) {
+  Future<void> handleSendPressed(types.PartialText message) async {
     FirebaseChatCore.instance.sendMessage(
       message,
       room!.id,
     );
-    setLastMessage(message.text);
+    await setLastMessage(message.text);
   }
 
   void setAttachmentUploading(bool uploading) {
@@ -214,5 +215,4 @@ class ChatController extends GetxController {
     room!.metadata![user.id]['unread'] = 0;
     FirebaseChatCore.instance.updateRoom(room!);
   }
-
 }

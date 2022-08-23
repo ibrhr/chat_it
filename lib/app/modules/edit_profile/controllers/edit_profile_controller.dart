@@ -1,6 +1,10 @@
+import 'dart:io';
+
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_firebase_chat_core/flutter_firebase_chat_core.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
+import 'package:image_picker/image_picker.dart';
 
 import '../../../../constants/exports.dart';
 import '../../auth/controllers/auth_controller.dart';
@@ -18,6 +22,26 @@ class EditProfileController extends GetxController {
 
   final _nameFormKey = GlobalKey<FormState>();
   final _aboutFormKey = GlobalKey<FormState>();
+
+  Future<void> updateImage() async {
+    final result = await ImagePicker().pickImage(
+      imageQuality: 70,
+      maxWidth: 1440,
+      source: ImageSource.gallery,
+    );
+
+    if (result != null) {
+      final file = File(result.path);
+      final name = result.name;
+
+      final reference = FirebaseStorage.instance.ref(name);
+      await reference.putFile(file);
+      final uri = await reference.getDownloadURL();
+
+      await users.doc(uid).update({'imageUrl': uri});
+      await _reloadUserData();
+    }
+  }
 
   void onNameTap() => Get.bottomSheet(
         Container(
@@ -139,8 +163,6 @@ class EditProfileController extends GetxController {
     await _reloadUserData();
   }
 
-  Future<void> updateImage(String photoUrl) async {}
-
   Future<void> _reloadUserData() async {
     await auth.getUser();
     name = '${auth.user!.firstName!} ${auth.user!.lastName!}';
@@ -150,7 +172,7 @@ class EditProfileController extends GetxController {
     update();
   }
 
-  void _setUserData() {
+  void _initUserData() {
     _user = auth.user!;
     uid = _user!.id;
     name = '${_user!.firstName!} ${_user!.lastName!}';
@@ -161,7 +183,7 @@ class EditProfileController extends GetxController {
 
   @override
   void onInit() {
-    _setUserData();
+    _initUserData();
     super.onInit();
   }
 }

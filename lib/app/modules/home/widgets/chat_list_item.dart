@@ -1,6 +1,7 @@
 // ignore_for_file: depend_on_referenced_packages
 import 'package:chat_it/app/modules/home/controllers/home_controller.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
+import 'package:flutter_firebase_chat_core/flutter_firebase_chat_core.dart';
 
 import '../../../../constants/exports.dart';
 import '../../../routes/app_pages.dart';
@@ -19,9 +20,35 @@ class ChatListItem extends GetView<HomeController> {
     final otherUser =
         room.users[0].id == user.id ? room.users[1] : room.users[0];
     return GestureDetector(
+      onLongPress: () => Get.dialog(AlertDialog(
+        content: PrimaryText(
+          'Delete your chat with ${otherUser.firstName} ?',
+          fontSize: 16,
+        ),
+        actionsAlignment: MainAxisAlignment.spaceAround,
+        actions: [
+          ElevatedButton(
+            onPressed: () {
+              FirebaseChatCore.instance.deleteRoom(room.id);
+              Get.back();
+            },
+            child: const PrimaryText(
+              'Yes',
+              fontSize: 14,
+            ),
+          ),
+          ElevatedButton(
+            onPressed: () => Get.back(),
+            child: const PrimaryText(
+              'No',
+              fontSize: 14,
+            ),
+          ),
+        ],
+      )),
       onTap: () async {
-        await controller.markAsRead(room);
         Get.toNamed(Routes.CHAT, arguments: room);
+        await controller.markAsRead(room);
       },
       child: Container(
         margin: const EdgeInsets.all(8),

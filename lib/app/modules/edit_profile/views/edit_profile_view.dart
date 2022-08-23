@@ -37,7 +37,7 @@ class EditProfileView extends GetView<EditProfileController> {
                       right: 0,
                       bottom: 0,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () async => await controller.updateImage(),
                         style: ButtonStyle(
                             shape: MaterialStateProperty.all<OutlinedBorder>(
                                 const CircleBorder())),

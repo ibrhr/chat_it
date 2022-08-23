@@ -11,27 +11,20 @@ class AuthController extends GetxController {
   types.User? user;
 
   Future<void> signInWithGoogle() async {
-    // Trigger the authentication flow
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-
-    // Obtain the auth details from the request
     final GoogleSignInAuthentication? googleAuth =
         await googleUser?.authentication;
-
-    // Create a new credential
     final credential = GoogleAuthProvider.credential(
       accessToken: googleAuth?.accessToken,
       idToken: googleAuth?.idToken,
     );
-
-    // Once signed in, return the UserCredential
     final userCredential =
         await FirebaseAuth.instance.signInWithCredential(credential);
 
     if (userCredential.additionalUserInfo!.isNewUser) {
       user = types.User(
           firstName: userCredential.user!.displayName!.split(' ').first,
-          id: userCredential.user!.uid, // UID from Firebase Authentication
+          id: userCredential.user!.uid, 
           imageUrl: userCredential.user!.photoURL,
           lastName: userCredential.user!.displayName!
               .split(' ')
