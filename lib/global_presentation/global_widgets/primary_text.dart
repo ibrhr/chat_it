@@ -29,7 +29,7 @@ class PrimaryText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextStyle style = TextStyle(
-      color: color ?? (Colors.white),
+      color: color ?? (Colors.black),
       fontSize: (fontSize).sp,
       fontWeight: fontWeight,
       height: height,

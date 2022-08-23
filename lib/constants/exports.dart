@@ -1,4 +1,5 @@
 export 'package:flutter_screenutil/flutter_screenutil.dart';
+export '../global_presentation/global_widgets/default_screen.dart';
 export '../global_presentation/global_widgets/primary_text.dart';
 export '../global_presentation/global_widgets/primary_button.dart';
 export '../global_presentation/global_widgets/primary_textfield.dart';
