@@ -23,24 +23,25 @@ class AuthController extends GetxController {
 
     if (userCredential.additionalUserInfo!.isNewUser) {
       user = types.User(
-          firstName: userCredential.user!.displayName!.split(' ').first,
-          id: userCredential.user!.uid, 
-          imageUrl: userCredential.user!.photoURL,
-          lastName: userCredential.user!.displayName!
-              .split(' ')
-              .getRange(1, userCredential.user!.displayName!.split(' ').length)
-              .join(''),
-          metadata: {
-            'email': userCredential.user!.email,
-            'about': 'Hi I am using chat it!'
-          });
+        firstName: userCredential.user!.displayName!.split(' ').first,
+        id: userCredential.user!.uid,
+        imageUrl: userCredential.user!.photoURL,
+        lastName: userCredential.user!.displayName!
+            .split(' ')
+            .getRange(1, userCredential.user!.displayName!.split(' ').length)
+            .join(''),
+        metadata: {
+          'email': userCredential.user!.email,
+          'about': 'Hi I am using chat it!',
+          'friends': const <String, dynamic>{}
+        },
+      );
       await FirebaseChatCore.instance.createUserInFirestore(
         user!,
       );
     } else {
       await getUser();
     }
-
   }
 
   Future<void> getUser() async {

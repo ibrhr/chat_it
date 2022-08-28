@@ -18,7 +18,8 @@ class MyMenuItem extends StatelessWidget {
         return Flexible(
           child: InkWell(
             onTap: () => controller.updateView(selectedView),
-            child: Container(
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 200),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(
                   Radius.circular(48.h),

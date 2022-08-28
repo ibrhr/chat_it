@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:firebase_storage/firebase_storage.dart';
@@ -22,6 +23,7 @@ class EditProfileController extends GetxController {
 
   final _nameFormKey = GlobalKey<FormState>();
   final _aboutFormKey = GlobalKey<FormState>();
+
 
   Future<void> updateImage() async {
     final result = await ImagePicker().pickImage(

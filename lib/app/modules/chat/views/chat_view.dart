@@ -6,40 +6,12 @@ import '../widgets/bubble.dart';
 // ignore_for_file: depend_on_referenced_packages
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 
+import 'package:dropdown_button2/dropdown_button2.dart';
+
+import '../../../../constants/exports.dart';
+
 class ChatView extends GetView<ChatController> {
   const ChatView({Key? key}) : super(key: key);
-
-  void onLongPress(BuildContext context, types.Message message) {
-    Get.dialog(
-      AlertDialog(
-        content: const PrimaryText(
-          'Delete Message ?',
-          fontSize: 16,
-        ),
-        actionsAlignment: MainAxisAlignment.spaceAround,
-        actions: [
-          ElevatedButton(
-            onPressed: () {
-              FirebaseChatCore.instance
-                  .deleteMessage(controller.room!.id, message.id);
-              Get.back();
-            },
-            child: const PrimaryText(
-              'Yes',
-              fontSize: 14,
-            ),
-          ),
-          ElevatedButton(
-            onPressed: () => Get.back(),
-            child: const PrimaryText(
-              'No',
-              fontSize: 14,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,6 +43,8 @@ class ChatView extends GetView<ChatController> {
                 fontSize: 16,
                 color: Colors.white,
               ),
+              const Spacer(),
+              const ChatDropDownButton(),
             ],
           ),
           bottom: StreamBuilder<types.Room>(
@@ -87,8 +61,9 @@ class ChatView extends GetView<ChatController> {
                   nextMessageInGroup: nextMessageInGroup,
                   child: child,
                 ),
+                isAttachmentUploading: controller.isAttachmentUploading,
                 onMessageLongPress: (context, message) =>
-                    onLongPress(context, message),
+                    controller.onMessageLongPress(context, message),
                 disableImageGallery: true,
                 messages: snapshot.data ?? [],
                 onAttachmentPressed: controller.handleAtachmentPressed,
@@ -102,6 +77,48 @@ class ChatView extends GetView<ChatController> {
           ),
         );
       }),
+    );
+  }
+}
+
+class ChatDropDownButton extends GetView<ChatController> {
+  const ChatDropDownButton({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return DropdownButtonHideUnderline(
+      child: DropdownButton2(
+        customButton: const Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Icon(
+            Icons.more_vert_outlined,
+          ),
+        ),
+        customItemsIndexes: const [3],
+        customItemsHeight: 8,
+        items: const [
+          DropdownMenuItem<String>(
+            value: 'remove',
+            child: PrimaryText(
+              'Remove Friend',
+            ),
+          ),
+        ],
+        onChanged: (String? value) {
+          controller.removeFriend(controller.otherUser!);
+        },
+        itemHeight: 48,
+        itemPadding: const EdgeInsets.only(left: 16, right: 16),
+        dropdownWidth: 160,
+        dropdownPadding: const EdgeInsets.symmetric(vertical: 6),
+        dropdownDecoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(4),
+        ),
+        dropdownElevation: 8,
+        offset: const Offset(0, 8),
+      ),
     );
   }
 }

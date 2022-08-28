@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ColorManager {
-  static Color backgroundColor = HexColor.fromHex("#4c82f6");
+  static Color backgroundColor = Colors.purple.shade400;
+  //HexColor.fromHex("#4c82f6");
   static Color scaffoldColor = HexColor.fromHex("#ffffff");
   static Color secondaryColor = HexColor.fromHex("#edf2fe");
   static Color iconColor = HexColor.fromHex('##707070');

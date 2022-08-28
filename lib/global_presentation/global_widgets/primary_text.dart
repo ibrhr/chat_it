@@ -1,5 +1,3 @@
-import 'package:google_fonts/google_fonts.dart';
-
 import '../../constants/exports.dart';
 
 class PrimaryText extends StatelessWidget {
@@ -32,6 +30,7 @@ class PrimaryText extends StatelessWidget {
       color: color ?? (Colors.black),
       fontSize: (fontSize).sp,
       fontWeight: fontWeight,
+      fontFamily: 'Inter',
       height: height,
       decoration: lineThrow ? TextDecoration.lineThrough : TextDecoration.none,
     );
@@ -41,7 +40,7 @@ class PrimaryText extends StatelessWidget {
       overflow: overflow,
       maxLines: maxLines,
       textDirection: TextDirection.ltr,
-      style: GoogleFonts.poppins(textStyle: style),
+      style: style,
     );
   }
 }

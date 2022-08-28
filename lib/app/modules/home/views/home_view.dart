@@ -57,7 +57,7 @@ class HomeView extends GetView<HomeController> {
             ),
             const SizedBox(height: 16),
             const Expanded(
-              child: ChatsList(),
+              child: ChatsPageView(),
             ),
           ],
         ),
@@ -68,6 +68,34 @@ class HomeView extends GetView<HomeController> {
         },
         child: const Icon(Icons.messenger_outline),
       ),
+    );
+  }
+}
+
+class ChatsPageView extends GetView<HomeController> {
+  const ChatsPageView({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return PageView(
+      controller: controller.pageController,
+      scrollDirection: Axis.horizontal,
+      onPageChanged: (value) {
+        if (!controller.isPageViewAnimating) {
+          if (value == 0) {
+            controller.updateView(SelectedView.all);
+          } else if (value == 1) {
+            controller.updateView(SelectedView.read);
+          } else if (value == 2) {
+            controller.updateView(SelectedView.unread);
+          }
+        }
+      },
+      children: const [
+        ChatsList(page: SelectedView.all),
+        ChatsList(page: SelectedView.read),
+        ChatsList(page: SelectedView.unread),
+      ],
     );
   }
 }

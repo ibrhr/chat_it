@@ -1,6 +1,6 @@
 {
-    "name": "chat_it",
-    "short_name": "chat_it",
+    "name": "Chat It",
+    "short_name": "Chat It",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

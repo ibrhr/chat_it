@@ -6,10 +6,19 @@ import 'package:flutter_firebase_chat_core/flutter_firebase_chat_core.dart';
 import '../controllers/home_controller.dart';
 import '../widgets/chat_list_item.dart';
 
-class ChatsList extends StatelessWidget {
+class ChatsList extends StatefulWidget {
   const ChatsList({
     Key? key,
+    required this.page,
   }) : super(key: key);
+  final SelectedView page;
+
+  @override
+  State<ChatsList> createState() => _ChatsListState();
+}
+
+class _ChatsListState extends State<ChatsList> {
+
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +36,7 @@ class ChatsList extends StatelessWidget {
             switch (controller.selectedView) {
               case SelectedView.all:
                 return ListView.builder(
-                  padding: const EdgeInsets.all(0),
+                  padding: EdgeInsets.zero,
                   itemCount: snapshot.data!.length,
                   itemBuilder: (context, i) {
                     final room = snapshot.data![i];
@@ -39,7 +48,7 @@ class ChatsList extends StatelessWidget {
                 );
               case SelectedView.read:
                 return ListView.builder(
-                  padding: const EdgeInsets.all(0),
+                  padding: EdgeInsets.zero,
                   itemCount: snapshot.data!.length,
                   itemBuilder: (context, i) {
                     final room = snapshot.data![i];
@@ -53,7 +62,7 @@ class ChatsList extends StatelessWidget {
                 );
               case SelectedView.unread:
                 return ListView.builder(
-                  padding: const EdgeInsets.all(0),
+                  padding: EdgeInsets.zero,
                   itemCount: snapshot.data!.length,
                   itemBuilder: (context, i) {
                     final room = snapshot.data![i];

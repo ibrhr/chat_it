@@ -1,7 +1,6 @@
 import 'package:chat_it/app/routes/app_pages.dart';
 import 'package:chat_it/constants/exports.dart';
-import 'package:flutter_signin_button/button_list.dart';
-import 'package:flutter_signin_button/button_view.dart';
+import 'package:lottie/lottie.dart';
 
 import '../controllers/auth_controller.dart';
 
@@ -10,29 +9,53 @@ class AuthView extends GetView<AuthController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const PrimaryText(
-              'Chat It',
-              fontSize: 24,
-              color: Colors.white,
-            ),
-            SizedBox(
-              height: 100.h,
-            ),
-            SignInButton(
-              Buttons.Google,
-              padding: const EdgeInsets.symmetric(vertical: 8),
-              onPressed: () async {
-                await controller.signInWithGoogle();
-                if (controller.user != null) {
-                  Get.offAndToNamed(Routes.HOME);
-                }
-              },
-            ),
-          ],
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            children: [
+              const Spacer(),
+              Image.asset('assets/icons/logo.png'),
+              ElevatedButton.icon(
+                icon: SizedBox(
+                  height: 25,
+                  width: 25,
+                  child: Image.asset(
+                    'assets/icons/google.png',
+                    fit: BoxFit.scaleDown,
+                  ),
+                ),
+                style: ElevatedButton.styleFrom(
+                    shape: const StadiumBorder(),
+                    padding: const EdgeInsets.all(14),
+                    primary: Colors.purple.shade400),
+                label: const PrimaryText(
+                  'Sign in with Google',
+                  fontWeight: FontWeight.w500,
+                  color: Colors.white,
+                  fontSize: 16,
+                ),
+                //   padding: const EdgeInsets.symmetric(vertical: 8),
+                onPressed: () async {
+                  await controller.signInWithGoogle();
+                  if (controller.user != null) {
+                    Get.offAndToNamed(Routes.HOME);
+                  }
+                },
+              ),
+              const Spacer(),
+              SizedBox(
+                height: Get.height / 3,
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 4),
+                  child: Lottie.asset(
+                    'assets/lottie/chatting.json',
+                    alignment: Alignment.bottomCenter,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

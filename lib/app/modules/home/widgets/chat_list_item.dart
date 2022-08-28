@@ -19,79 +19,82 @@ class ChatListItem extends GetView<HomeController> {
   Widget build(BuildContext context) {
     final otherUser =
         room.users[0].id == user.id ? room.users[1] : room.users[0];
-    return GestureDetector(
-      onLongPress: () => Get.dialog(AlertDialog(
-        content: PrimaryText(
-          'Delete your chat with ${otherUser.firstName} ?',
-          fontSize: 16,
-        ),
-        actionsAlignment: MainAxisAlignment.spaceAround,
-        actions: [
-          ElevatedButton(
-            onPressed: () {
-              FirebaseChatCore.instance.deleteRoom(room.id);
-              Get.back();
-            },
-            child: const PrimaryText(
-              'Yes',
-              fontSize: 14,
-            ),
+    return Material(
+      color: Colors.white,
+      child: InkWell(
+        onLongPress: () => Get.dialog(AlertDialog(
+          content: PrimaryText(
+            'Delete your chat with ${otherUser.firstName} ?',
+            fontSize: 16,
           ),
-          ElevatedButton(
-            onPressed: () => Get.back(),
-            child: const PrimaryText(
-              'No',
-              fontSize: 14,
-            ),
-          ),
-        ],
-      )),
-      onTap: () async {
-        Get.toNamed(Routes.CHAT, arguments: room);
-        await controller.markAsRead(room);
-      },
-      child: Container(
-        margin: const EdgeInsets.all(8),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            CircleAvatar(
-              radius: 32,
-              foregroundImage: NetworkImage(
-                otherUser.imageUrl!,
+          actionsAlignment: MainAxisAlignment.spaceAround,
+          actions: [
+            ElevatedButton(
+              onPressed: () {
+                FirebaseChatCore.instance.deleteRoom(room.id);
+                Get.back();
+              },
+              child: const PrimaryText(
+                'Yes',
+                fontSize: 14,
               ),
             ),
-            const SizedBox(
-              width: 8,
-            ),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  PrimaryText(
-                    '${otherUser.firstName!} ${otherUser.lastName!}',
-                    fontSize: 16,
-                  ),
-                  PrimaryText(
-                    room.metadata!['lastMessage'],
-                    overflow: TextOverflow.ellipsis,
-                    fontSize: 11,
-                    maxLines: 1,
-                  ),
-                ],
+            ElevatedButton(
+              onPressed: () => Get.back(),
+              child: const PrimaryText(
+                'No',
+                fontSize: 14,
               ),
             ),
-            room.metadata![user.id]['unread'] != 0
-                ? CircleAvatar(
-                    backgroundColor: ColorManager.backgroundColor,
-                    radius: 16,
-                    child: PrimaryText(
-                      room.metadata![user.id]['unread'].toString(),
-                      color: Colors.white,
-                    ),
-                  )
-                : Container()
           ],
+        )),
+        onTap: () async {
+          Get.toNamed(Routes.CHAT, arguments: room);
+          await controller.markAsRead(room);
+        },
+        child: Container(
+          margin: const EdgeInsets.all(8),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CircleAvatar(
+                radius: 32,
+                foregroundImage: NetworkImage(
+                  otherUser.imageUrl!,
+                ),
+              ),
+              const SizedBox(
+                width: 8,
+              ),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    PrimaryText(
+                      '${otherUser.firstName!} ${otherUser.lastName!}',
+                      fontSize: 16,
+                    ),
+                    PrimaryText(
+                      room.metadata!['lastMessage'],
+                      overflow: TextOverflow.ellipsis,
+                      fontSize: 11,
+                      maxLines: 1,
+                    ),
+                  ],
+                ),
+              ),
+              room.metadata![user.id]['unread'] != 0
+                  ? CircleAvatar(
+                      backgroundColor: ColorManager.backgroundColor,
+                      radius: 16,
+                      child: PrimaryText(
+                        room.metadata![user.id]['unread'].toString(),
+                        color: Colors.white,
+                      ),
+                    )
+                  : Container()
+            ],
+          ),
         ),
       ),
     );

@@ -1,4 +1,7 @@
 // ignore_for_file: depend_on_referenced_packages
+
+import 'dart:async';
+
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:flutter_firebase_chat_core/flutter_firebase_chat_core.dart';
 
@@ -15,7 +18,34 @@ class HomeController extends GetxController {
   SelectedView selectedView = SelectedView.all;
   types.User user = Get.find<AuthController>().user!;
 
-  void updateView(SelectedView newView) {
+  late PageController pageController;
+  bool isPageViewAnimating = false;
+
+  @override
+  void onInit() {
+    super.onInit();
+    pageController = PageController();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    pageController.dispose();
+  }
+
+  Future<void> updateView(SelectedView newView) async {
+    isPageViewAnimating = true;
+    if (newView == SelectedView.all) {
+      await pageController.animateToPage(0,
+          duration: const Duration(milliseconds: 200), curve: Curves.ease);
+    } else if (newView == SelectedView.read) {
+      await pageController.animateToPage(1,
+          duration: const Duration(milliseconds: 200), curve: Curves.ease);
+    } else if (newView == SelectedView.unread) {
+      await pageController.animateToPage(2,
+          duration: const Duration(milliseconds: 200), curve: Curves.ease);
+    }
+    isPageViewAnimating = false;
     selectedView = newView;
     update();
   }

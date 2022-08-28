@@ -5,7 +5,10 @@ class MyThemes {
     scaffoldBackgroundColor: ColorManager.backgroundColor,
     primaryColor: ColorManager.scaffoldColor,
     backgroundColor: ColorManager.backgroundColor,
-    iconTheme: IconThemeData(color: ColorManager.white, size: 18.h),
+    colorScheme: ColorScheme.fromSeed(
+      seedColor: ColorManager.backgroundColor,
+    ),
+    iconTheme: IconThemeData(color: ColorManager.white, size: 18),
   );
   static final dark = ThemeData.dark().copyWith(
     // main colors of the app
@@ -28,7 +31,7 @@ class MyThemes {
                 (states) => ColorManager.scaffoldDarkColor))),
 
     //Icon Theme
-    iconTheme: IconThemeData(color: ColorManager.white, size: 22.h),
+    iconTheme: IconThemeData(color: ColorManager.white, size: 22),
 
     // App bar theme
     appBarTheme: AppBarTheme(

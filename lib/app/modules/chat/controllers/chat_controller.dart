@@ -27,6 +27,20 @@ class ChatController extends GetxController {
     }
   }
 
+  Future<void> removeFriend(types.User friend) async {
+    var metadata = user.metadata;
+    Map<String, dynamic> friends = metadata!['friends'];
+    friends.remove(friend.id);
+    metadata.addAll({'friends': friends});
+
+    await FirebaseChatCore.instance
+        .getFirebaseFirestore()
+        .collection('users')
+        .doc(user.id)
+        .update({'metadata': metadata});
+    update();
+  }
+
   void handleAtachmentPressed() {
     Get.bottomSheet(
       SafeArea(
@@ -139,6 +153,37 @@ class ChatController extends GetxController {
         setAttachmentUploading(false);
       }
     }
+  }
+
+  void onMessageLongPress(BuildContext context, types.Message message) {
+    Get.dialog(
+      AlertDialog(
+        content: const PrimaryText(
+          'Delete Message ?',
+          fontSize: 16,
+        ),
+        actionsAlignment: MainAxisAlignment.spaceAround,
+        actions: [
+          ElevatedButton(
+            onPressed: () {
+              FirebaseChatCore.instance.deleteMessage(room!.id, message.id);
+              Get.back();
+            },
+            child: const PrimaryText(
+              'Yes',
+              fontSize: 14,
+            ),
+          ),
+          ElevatedButton(
+            onPressed: () => Get.back(),
+            child: const PrimaryText(
+              'No',
+              fontSize: 14,
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   void handleMessageTap(BuildContext _, types.Message message) async {
