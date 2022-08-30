@@ -16,7 +16,7 @@ class AddFriendView extends GetView<UsersController> {
             onPressed: () => Get.back(),
             icon: const Icon(Icons.arrow_back),
           ),
-          const SizedBox(width: 8),
+           SizedBox(width: 8.w),
           const PrimaryText(
             'Add Friend',
             fontSize: 20,

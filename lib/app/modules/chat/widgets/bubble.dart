@@ -26,8 +26,8 @@ class MyBubble extends GetView<ChatController> {
       margin: nextMessageInGroup
           ? const BubbleEdges.symmetric(horizontal: 6)
           : null,
-      nipHeight: 16,
-      nipWidth: 4,
+      nipHeight: 16.h,
+      nipWidth: 4.w,
       nip: nextMessageInGroup
           ? BubbleNip.no
           : controller.user.id != message.author.id

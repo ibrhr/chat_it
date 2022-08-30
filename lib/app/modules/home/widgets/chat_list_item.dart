@@ -63,8 +63,8 @@ class ChatListItem extends GetView<HomeController> {
                   otherUser.imageUrl!,
                 ),
               ),
-              const SizedBox(
-                width: 8,
+               SizedBox(
+                width: 8.w
               ),
               Expanded(
                 child: Column(

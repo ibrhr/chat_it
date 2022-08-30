@@ -13,7 +13,7 @@ class EditProfileView extends GetView<EditProfileController> {
                 onPressed: () => Get.back(),
                 icon: const Icon(Icons.arrow_back),
               ),
-              const SizedBox(width: 8),
+               SizedBox(width: 8.w),
                PrimaryText(
                 LocaleKeys.profile.tr,
                 fontSize: 20,
@@ -52,7 +52,7 @@ class EditProfileView extends GetView<EditProfileController> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 24),
+                 SizedBox(height: 24.h),
                 ListTile(
                   onTap: () => controller.onNameTap(),
                   leading: Icon(

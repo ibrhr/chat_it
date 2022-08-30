@@ -45,7 +45,7 @@ class ChatController extends GetxController {
     Get.bottomSheet(
       SafeArea(
         child: SizedBox(
-          height: 144,
+          height: 144.h,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[

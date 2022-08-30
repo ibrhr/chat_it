@@ -1,12 +1,10 @@
-
 import 'package:dropdown_button2/dropdown_button2.dart';
 
 import '../../../../constants/exports.dart';
-import '../../../routes/app_pages.dart';
-import '../../auth/controllers/auth_controller.dart';
+import '../controllers/chat_controller.dart';
 
-class MyDropDownButton extends StatelessWidget {
-  const MyDropDownButton({
+class ChatDropDownButton extends GetView<ChatController> {
+  const ChatDropDownButton({
     Key? key,
   }) : super(key: key);
 
@@ -22,24 +20,16 @@ class MyDropDownButton extends StatelessWidget {
         ),
         customItemsIndexes: const [3],
         customItemsHeight: 8.h,
-        items: const [
+        items: [
           DropdownMenuItem<String>(
-            value: 'Profile',
+            value: 'remove',
             child: PrimaryText(
-              'Profile',
-            ),
-          ),
-          DropdownMenuItem<String>(
-            value: 'Logout',
-            child: PrimaryText(
-              'Logout',
+              LocaleKeys.remove_friend.tr,
             ),
           ),
         ],
         onChanged: (String? value) {
-          value! == 'Profile'
-              ? Get.toNamed(Routes.EDIT_PROFILE)
-              : Get.find<AuthController>().signOut();
+          controller.removeFriend(controller.otherUser!);
         },
         itemHeight: 48.h,
         itemPadding: const EdgeInsets.only(left: 16, right: 16),

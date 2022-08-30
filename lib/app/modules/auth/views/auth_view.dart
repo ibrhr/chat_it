@@ -18,8 +18,8 @@ class AuthView extends GetView<AuthController> {
               Image.asset('assets/icons/logo.png'),
               ElevatedButton.icon(
                 icon: SizedBox(
-                  height: 25,
-                  width: 25,
+                  height: 25.h,
+                  width: 25.w,
                   child: Image.asset(
                     'assets/icons/google.png',
                     fit: BoxFit.scaleDown,

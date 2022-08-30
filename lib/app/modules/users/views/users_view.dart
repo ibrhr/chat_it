@@ -15,7 +15,7 @@ class UsersView extends GetView<UsersController> {
             onPressed: () => Get.back(),
             icon: const Icon(Icons.arrow_back),
           ),
-          const SizedBox(width: 8),
+           SizedBox(width: 8.w),
           const PrimaryText(
             'Select User',
             fontSize: 20,
@@ -108,7 +108,7 @@ class UserChat extends GetView<UsersController> {
                   user.imageUrl!,
                 ),
               ),
-              const SizedBox(width: 8),
+               SizedBox(width: 8.w),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

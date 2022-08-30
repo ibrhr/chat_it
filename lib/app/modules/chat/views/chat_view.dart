@@ -6,9 +6,9 @@ import '../widgets/bubble.dart';
 // ignore_for_file: depend_on_referenced_packages
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 
-import 'package:dropdown_button2/dropdown_button2.dart';
 
 import '../../../../constants/exports.dart';
+import '../widgets/chat_drop_down_button.dart';
 
 class ChatView extends GetView<ChatController> {
   const ChatView({Key? key}) : super(key: key);
@@ -30,14 +30,14 @@ class ChatView extends GetView<ChatController> {
                 onPressed: () => Get.back(),
                 icon: const Icon(Icons.arrow_back),
               ),
-              const SizedBox(width: 4),
+               SizedBox(width: 4.w),
               CircleAvatar(
                 radius: 20,
                 backgroundImage: NetworkImage(
                   controller.otherUser!.imageUrl!,
                 ),
               ),
-              const SizedBox(width: 8),
+               SizedBox(width: 8.w),
               PrimaryText(
                 controller.otherUser!.firstName!,
                 fontSize: 16,
@@ -77,48 +77,6 @@ class ChatView extends GetView<ChatController> {
           ),
         );
       }),
-    );
-  }
-}
-
-class ChatDropDownButton extends GetView<ChatController> {
-  const ChatDropDownButton({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return DropdownButtonHideUnderline(
-      child: DropdownButton2(
-        customButton: const Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Icon(
-            Icons.more_vert_outlined,
-          ),
-        ),
-        customItemsIndexes: const [3],
-        customItemsHeight: 8,
-        items:  [
-          DropdownMenuItem<String>(
-            value: 'remove',
-            child: PrimaryText(
-              LocaleKeys.remove_friend.tr,
-            ),
-          ),
-        ],
-        onChanged: (String? value) {
-          controller.removeFriend(controller.otherUser!);
-        },
-        itemHeight: 48,
-        itemPadding: const EdgeInsets.only(left: 16, right: 16),
-        dropdownWidth: 160,
-        dropdownPadding: const EdgeInsets.symmetric(vertical: 6),
-        dropdownDecoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(4),
-        ),
-        dropdownElevation: 8,
-        offset: const Offset(0, 8),
-      ),
     );
   }
 }

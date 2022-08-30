@@ -24,7 +24,6 @@ class EditProfileController extends GetxController {
   final _nameFormKey = GlobalKey<FormState>();
   final _aboutFormKey = GlobalKey<FormState>();
 
-
   Future<void> updateImage() async {
     final result = await ImagePicker().pickImage(
       imageQuality: 70,
@@ -63,8 +62,9 @@ class EditProfileController extends GetxController {
                   key: _nameFormKey,
                   child: TextFormField(
                     initialValue: name,
-                    decoration:  InputDecoration(
+                    decoration: InputDecoration(
                       labelText: LocaleKeys.enter_name.tr,
+                      labelStyle: TextStyle(fontSize: 16.sp),
                     ),
                     onSaved: (newValue) async => await _updateName(newValue!),
                   ),
@@ -85,7 +85,7 @@ class EditProfileController extends GetxController {
                     TextButton(
                       onPressed: () => Get.back(),
                       child: PrimaryText(
-                       LocaleKeys.cancel.tr,
+                        LocaleKeys.cancel.tr,
                         color: ColorManager.iconColor,
                       ),
                     ),
@@ -115,8 +115,9 @@ class EditProfileController extends GetxController {
                 child: TextFormField(
                   initialValue: about,
                   maxLines: 3,
-                  decoration:  InputDecoration(
+                  decoration: InputDecoration(
                     labelText: LocaleKeys.enter_about.tr,
+                    labelStyle: TextStyle(fontSize: 16.sp),
                   ),
                   onSaved: (newValue) async => await _updateAbout(newValue!),
                 ),

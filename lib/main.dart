@@ -30,11 +30,12 @@ class MyApp extends StatelessWidget {
           initialRoute: FirebaseAuth.instance.currentUser == null
               ? AppPages.INITIAL
               : Routes.HOME,
+          locale: const Locale('en'),
+          translationsKeys: AppTranslation.translations,
           getPages: AppPages.routes,
           initialBinding: AuthBinding(),
           debugShowCheckedModeBanner: false,
           theme: MyThemes.light,
-          translationsKeys: AppTranslation.translations,
         );
       },
     );

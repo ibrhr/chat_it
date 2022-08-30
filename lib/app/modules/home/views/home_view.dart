@@ -55,7 +55,7 @@ class HomeView extends GetView<HomeController> {
                 ],
               ),
             ),
-            const SizedBox(height: 16),
+           SizedBox(height: 16.h),
             const Expanded(
               child: ChatsPageView(),
             ),
