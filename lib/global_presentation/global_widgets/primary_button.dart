@@ -7,7 +7,7 @@ class PrimaryButton extends StatelessWidget {
   final Color? fontColor;
   final double? fontSize, width;
   final FontWeight fontWeight;
-      PrimaryButton(
+     const PrimaryButton(
       {Key? key,
       required this.onPressed,
       required this.title,

@@ -1,7 +1,7 @@
 import '../../constants/exports.dart';
 
 class GlobalButton extends StatelessWidget {
-      GlobalButton({
+     const GlobalButton({
     Key? key,
     this.onTap,
     this.selected,
@@ -55,7 +55,7 @@ class GlobalButton extends StatelessWidget {
               child: Row(
                 children: [
                   SizedBox(width: 15.w),
-                  icon ??     SizedBox(),
+                  icon ??    const SizedBox(),
                 ],
               ),
             ),
@@ -64,7 +64,7 @@ class GlobalButton extends StatelessWidget {
               child: Row(
                 children: [
                   SizedBox(width: 5.w),
-                  icon ??     SizedBox(),
+                  icon ??    const SizedBox(),
                 ],
               ),
             ),

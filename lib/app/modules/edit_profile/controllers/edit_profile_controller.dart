@@ -47,7 +47,7 @@ class EditProfileController extends GetxController {
 
   void onNameTap() => Get.bottomSheet(
         Container(
-          decoration:  BoxDecoration(
+          decoration: const BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(16),
@@ -55,7 +55,7 @@ class EditProfileController extends GetxController {
             ),
           ),
           child: Padding(
-            padding:  EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -98,7 +98,7 @@ class EditProfileController extends GetxController {
       );
 
   void onAboutTap() => Get.bottomSheet(Container(
-        decoration:  BoxDecoration(
+        decoration: const BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(16),
@@ -106,7 +106,7 @@ class EditProfileController extends GetxController {
           ),
         ),
         child: Padding(
-          padding:  EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [

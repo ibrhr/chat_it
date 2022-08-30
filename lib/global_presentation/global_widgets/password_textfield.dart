@@ -11,7 +11,7 @@ class PasswordTextField extends StatefulWidget {
   final InputBorder? enabledBorder;
   final FocusNode? focusNode;
   final double leftOrRightPadding;
-   PasswordTextField({
+  const PasswordTextField({
     Key? key,
     required this.hintText,
     required this.controller,
@@ -48,7 +48,7 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
         SizedBox(height: 7.h),
         Container(
           decoration: BoxDecoration(
-            borderRadius:  BorderRadius.all(Radius.circular(8.0)),
+            borderRadius: const BorderRadius.all(Radius.circular(8.0)),
             color: ColorManager.white,
           ),
           child: TextFormField(
@@ -74,14 +74,14 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
               focusedBorder: widget.focusedBorder,
               enabledBorder: widget.enabledBorder,
               contentPadding: EdgeInsets.only(
-                top: Get.locale !=  Locale("ar") ? 12.h : 18.h,
+                top: Get.locale != const Locale("ar") ? 12.h : 18.h,
               ),
               prefixIcon: Padding(
                 padding: EdgeInsets.only(
-                  right: Get.locale !=  Locale("ar")
+                  right: Get.locale != const Locale("ar")
                       ? 8.w
                       : widget.leftOrRightPadding.w,
-                  left: Get.locale ==  Locale("ar")
+                  left: Get.locale == const Locale("ar")
                       ? 8.w
                       : widget.leftOrRightPadding.w,
                 ),
@@ -95,7 +95,7 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
                   size: 23.w,
                 ),
               ),
-              prefixIconConstraints:  BoxConstraints(
+              prefixIconConstraints: const BoxConstraints(
                 minWidth: 25,
               ),
               suffixIcon: IconButton(

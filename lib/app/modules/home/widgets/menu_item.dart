@@ -2,7 +2,7 @@ import '../../../../constants/exports.dart';
 import '../controllers/home_controller.dart';
 
 class MyMenuItem extends StatelessWidget {
-   MyMenuItem({
+  const MyMenuItem({
     Key? key,
     required this.selectedView,
     required this.text,
@@ -19,7 +19,7 @@ class MyMenuItem extends StatelessWidget {
           child: InkWell(
             onTap: () => controller.updateView(selectedView),
             child: AnimatedContainer(
-              duration:  Duration(milliseconds: 200),
+              duration: const Duration(milliseconds: 200),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(
                   Radius.circular(48.h),
@@ -28,7 +28,7 @@ class MyMenuItem extends StatelessWidget {
                     ? ColorManager.backgroundColor
                     : ColorManager.secondaryColor,
               ),
-              constraints:  BoxConstraints.expand(),
+              constraints: const BoxConstraints.expand(),
               child: Center(
                 child: PrimaryText(
                   text,

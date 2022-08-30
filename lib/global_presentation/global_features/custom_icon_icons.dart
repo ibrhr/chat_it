@@ -18,13 +18,13 @@ import 'package:flutter/widgets.dart';
 class CustomIcon {
   CustomIcon._();
 
-  static  _kFontFam = 'CustomIcon';
-  static  String? _kFontPkg = null;
+  static const _kFontFam = 'CustomIcon';
+  static const String? _kFontPkg = null;
 
-  static  IconData profile =
+  static const IconData profile =
       IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static  IconData courses =
+  static const IconData courses =
       IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static  IconData home =
+  static const IconData home =
       IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

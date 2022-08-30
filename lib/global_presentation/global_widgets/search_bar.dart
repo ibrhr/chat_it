@@ -35,7 +35,7 @@ class SearchBar extends StatelessWidget {
                   },
                   decoration: InputDecoration(
                       border: InputBorder.none,
-                      labelStyle:  TextStyle(
+                      labelStyle: const TextStyle(
                         fontFamily: FontConstants.fontFamily,
                         fontSize: 17,
                         color: Color(0x66000000),

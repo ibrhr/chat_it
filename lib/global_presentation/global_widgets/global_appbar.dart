@@ -13,7 +13,7 @@ AppBar globalAppBar({String? title, List<Widget>? actions, Widget? leading}) {
             color: ColorManager.primary,
             fontWeight: FontWeightManager.medium,
           )
-        :  SizedBox(),
+        : const SizedBox(),
     leading: leading ??
         GestureDetector(
           onTap: () {

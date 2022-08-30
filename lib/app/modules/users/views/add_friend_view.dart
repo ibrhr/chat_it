@@ -6,7 +6,7 @@ import 'package:flutter_firebase_chat_core/flutter_firebase_chat_core.dart';
 import '../controllers/users_controller.dart';
 
 class AddFriendView extends GetView<UsersController> {
-   AddFriendView({Key? key}) : super(key: key);
+  const AddFriendView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return DefaultScreen(
@@ -14,10 +14,10 @@ class AddFriendView extends GetView<UsersController> {
         children: [
           IconButton(
             onPressed: () => Get.back(),
-            icon:  Icon(Icons.arrow_back),
+            icon: const Icon(Icons.arrow_back),
           ),
-           SizedBox(width: 8),
-           PrimaryText(
+          const SizedBox(width: 8),
+          const PrimaryText(
             'Add Friend',
             fontSize: 20,
             color: Colors.white,
@@ -27,12 +27,12 @@ class AddFriendView extends GetView<UsersController> {
       bottom: GetBuilder<UsersController>(
         builder: (controller) => StreamBuilder<List<types.User>>(
           stream: FirebaseChatCore.instance.users(),
-          initialData:  [],
+          initialData: const [],
           builder: (context, snapshot) {
             final Map<String, dynamic> friends =
                 controller.user.metadata!['friends'];
             return ListView.builder(
-              padding:  EdgeInsets.only(top: 16),
+              padding: const EdgeInsets.only(top: 16),
               shrinkWrap: true,
               itemCount: snapshot.data!.length,
               itemBuilder: (context, i) =>

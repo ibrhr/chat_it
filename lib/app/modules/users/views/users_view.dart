@@ -5,7 +5,7 @@ import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import '../controllers/users_controller.dart';
 
 class UsersView extends GetView<UsersController> {
-   UsersView({Key? key}) : super(key: key);
+  const UsersView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return DefaultScreen(
@@ -13,10 +13,10 @@ class UsersView extends GetView<UsersController> {
         children: [
           IconButton(
             onPressed: () => Get.back(),
-            icon:  Icon(Icons.arrow_back),
+            icon: const Icon(Icons.arrow_back),
           ),
-           SizedBox(width: 8),
-           PrimaryText(
+          const SizedBox(width: 8),
+          const PrimaryText(
             'Select User',
             fontSize: 20,
             color: Colors.white,
@@ -31,7 +31,7 @@ class UsersView extends GetView<UsersController> {
             child: InkWell(
               onTap: () => Get.toNamed(Routes.ADD_FRIEND),
               child: ListTile(
-                contentPadding:  EdgeInsets.all(16),
+                contentPadding: const EdgeInsets.all(16),
                 leading: CircleAvatar(
                   backgroundColor: ColorManager.backgroundColor,
                   radius: 24.w,
@@ -41,21 +41,21 @@ class UsersView extends GetView<UsersController> {
                     size: 24.w,
                   ),
                 ),
-                title:  PrimaryText(
+                title: const PrimaryText(
                   'Add Friend',
                   fontSize: 18,
                 ),
               ),
             ),
           ),
-           Padding(
+          const Padding(
             padding: EdgeInsets.all(16),
             child: PrimaryText('Friends on Chat It'),
           ),
           Expanded(
             child: StreamBuilder<List<types.User>>(
               stream: controller.users,
-              initialData:  [],
+              initialData: const [],
               builder: (context, snapshot) {
                 final Map<String, dynamic> friends =
                     controller.user.metadata!['friends'];
@@ -80,7 +80,7 @@ class UsersView extends GetView<UsersController> {
 }
 
 class UserChat extends GetView<UsersController> {
-   UserChat({
+  const UserChat({
     required this.user,
     this.isAddFriend = false,
     Key? key,
@@ -97,8 +97,8 @@ class UserChat extends GetView<UsersController> {
             ? await controller.addFriend(user)
             : await controller.createChat(user),
         child: Container(
-          margin:  EdgeInsets.symmetric(vertical: 8),
-          padding:  EdgeInsets.only(left: 16, right: 16),
+          margin: const EdgeInsets.symmetric(vertical: 8),
+          padding: const EdgeInsets.only(left: 16, right: 16),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -108,7 +108,7 @@ class UserChat extends GetView<UsersController> {
                   user.imageUrl!,
                 ),
               ),
-               SizedBox(width: 8),
+              const SizedBox(width: 8),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

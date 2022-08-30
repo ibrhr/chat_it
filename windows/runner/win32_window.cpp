@@ -6,7 +6,7 @@
 
 namespace {
 
-constexpr  wchar_t kWindowClassName[] = L"FLUTTER_RUNNER_WIN32_WINDOW";
+constexpr const wchar_t kWindowClassName[] = L"FLUTTER_RUNNER_WIN32_WINDOW";
 
 // The number of Win32Window objects that currently exist.
 static int g_active_window_count = 0;
@@ -52,7 +52,7 @@ class WindowClassRegistrar {
 
   // Returns the name of the window class, registering the class if it hasn't
   // previously been registered.
-   wchar_t* GetWindowClass();
+  const wchar_t* GetWindowClass();
 
   // Unregisters the window class. Should only be called if there are no
   // instances of the window.
@@ -68,7 +68,7 @@ class WindowClassRegistrar {
 
 WindowClassRegistrar* WindowClassRegistrar::instance_ = nullptr;
 
- wchar_t* WindowClassRegistrar::GetWindowClass() {
+const wchar_t* WindowClassRegistrar::GetWindowClass() {
   if (!class_registered_) {
     WNDCLASS window_class{};
     window_class.hCursor = LoadCursor(nullptr, IDC_ARROW);
@@ -102,15 +102,15 @@ Win32Window::~Win32Window() {
   Destroy();
 }
 
-bool Win32Window::CreateAndShow( std::wstring& title,
-                                 Point& origin,
-                                 Size& size) {
+bool Win32Window::CreateAndShow(const std::wstring& title,
+                                const Point& origin,
+                                const Size& size) {
   Destroy();
 
-   wchar_t* window_class =
+  const wchar_t* window_class =
       WindowClassRegistrar::GetInstance()->GetWindowClass();
 
-   POINT target_point = {static_cast<LONG>(origin.x),
+  const POINT target_point = {static_cast<LONG>(origin.x),
                               static_cast<LONG>(origin.y)};
   HMONITOR monitor = MonitorFromPoint(target_point, MONITOR_DEFAULTTONEAREST);
   UINT dpi = FlutterDesktopGetDpiForMonitor(monitor);
@@ -130,10 +130,10 @@ bool Win32Window::CreateAndShow( std::wstring& title,
 }
 
 // static
-LRESULT CALLBACK Win32Window::WndProc(HWND  window,
-                                      UINT  message,
-                                      WPARAM  wparam,
-                                      LPARAM  lparam) noexcept {
+LRESULT CALLBACK Win32Window::WndProc(HWND const window,
+                                      UINT const message,
+                                      WPARAM const wparam,
+                                      LPARAM const lparam) noexcept {
   if (message == WM_NCCREATE) {
     auto window_struct = reinterpret_cast<CREATESTRUCT*>(lparam);
     SetWindowLongPtr(window, GWLP_USERDATA,
@@ -151,9 +151,9 @@ LRESULT CALLBACK Win32Window::WndProc(HWND  window,
 
 LRESULT
 Win32Window::MessageHandler(HWND hwnd,
-                            UINT  message,
-                            WPARAM  wparam,
-                            LPARAM  lparam) noexcept {
+                            UINT const message,
+                            WPARAM const wparam,
+                            LPARAM const lparam) noexcept {
   switch (message) {
     case WM_DESTROY:
       window_handle_ = nullptr;
@@ -205,7 +205,7 @@ void Win32Window::Destroy() {
   }
 }
 
-Win32Window* Win32Window::GetThisFromHandle(HWND  window) noexcept {
+Win32Window* Win32Window::GetThisFromHandle(HWND const window) noexcept {
   return reinterpret_cast<Win32Window*>(
       GetWindowLongPtr(window, GWLP_USERDATA));
 }

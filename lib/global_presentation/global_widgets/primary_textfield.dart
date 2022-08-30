@@ -22,7 +22,7 @@ class PrimaryTextField extends StatelessWidget {
   final double leftOrRightPadding;
   final int noOfLines;
 
-      PrimaryTextField({
+     const PrimaryTextField({
     Key? key,
     this.hintText,
     required this.controller,
@@ -58,7 +58,7 @@ class PrimaryTextField extends StatelessWidget {
         SizedBox(height: 5.h),
         Container(
           decoration: BoxDecoration(
-            borderRadius:     BorderRadius.all(Radius.circular(8.0)),
+            borderRadius:    const BorderRadius.all(Radius.circular(8.0)),
             color: ColorManager.white,
           ),
           child: TextFormField(
@@ -81,8 +81,8 @@ class PrimaryTextField extends StatelessWidget {
               prefixIcon: prefixIcon != null
                   ? Padding(
                       padding: EdgeInsets.only(
-                        right: Get.locale ==     Locale("en") ? 8.w : 0.0,
-                        left: Get.locale ==     Locale("ar") ? 8.w : 0.0,
+                        right: Get.locale ==    const Locale("en") ? 8.w : 0.0,
+                        left: Get.locale ==    const Locale("ar") ? 8.w : 0.0,
                       ),
                       child: prefixIcon,
                     )
@@ -107,15 +107,15 @@ class PrimaryTextField extends StatelessWidget {
                 borderSide: BorderSide(color: ColorManager.grey),
               ),
               contentPadding: EdgeInsets.only(
-                top: Get.locale !=     Locale("ar")
+                top: Get.locale !=    const Locale("ar")
                     ? (multiLines!)
                         ? 20.h
                         : 2.h
                     : 8.h,
-                left: Get.locale !=     Locale("ar")
+                left: Get.locale !=    const Locale("ar")
                     ? leftOrRightPadding.h
                     : 0.h,
-                right: Get.locale !=     Locale("ar")
+                right: Get.locale !=    const Locale("ar")
                     ? 0.h
                     : leftOrRightPadding.h,
               ),

@@ -7,7 +7,7 @@ import '../../../../constants/exports.dart';
 import '../../../routes/app_pages.dart';
 
 class ChatListItem extends GetView<HomeController> {
-   ChatListItem({
+  const ChatListItem({
     Key? key,
     required this.room,
     required this.user,
@@ -53,7 +53,7 @@ class ChatListItem extends GetView<HomeController> {
           await controller.markAsRead(room);
         },
         child: Container(
-          margin:  EdgeInsets.all(8),
+          margin: const EdgeInsets.all(8),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -63,7 +63,7 @@ class ChatListItem extends GetView<HomeController> {
                   otherUser.imageUrl!,
                 ),
               ),
-               SizedBox(
+              const SizedBox(
                 width: 8,
               ),
               Expanded(

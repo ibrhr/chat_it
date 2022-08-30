@@ -2,7 +2,7 @@ import 'package:chat_it/constants/exports.dart';
 import '../controllers/edit_profile_controller.dart';
 
 class EditProfileView extends GetView<EditProfileController> {
-   EditProfileView({Key? key}) : super(key: key);
+  const EditProfileView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return GetBuilder<EditProfileController>(
@@ -11,9 +11,9 @@ class EditProfileView extends GetView<EditProfileController> {
             children: [
               IconButton(
                 onPressed: () => Get.back(),
-                icon:  Icon(Icons.arrow_back),
+                icon: const Icon(Icons.arrow_back),
               ),
-               SizedBox(width: 8),
+              const SizedBox(width: 8),
                PrimaryText(
                 LocaleKeys.profile.tr,
                 fontSize: 20,
@@ -40,8 +40,8 @@ class EditProfileView extends GetView<EditProfileController> {
                         onPressed: () async => await controller.updateImage(),
                         style: ButtonStyle(
                             shape: MaterialStateProperty.all<OutlinedBorder>(
-                                 CircleBorder())),
-                        child:  Padding(
+                                const CircleBorder())),
+                        child: const Padding(
                           padding: EdgeInsets.all(16),
                           child: Icon(
                             Icons.image_outlined,
@@ -52,7 +52,7 @@ class EditProfileView extends GetView<EditProfileController> {
                     ),
                   ],
                 ),
-                 SizedBox(height: 24),
+                const SizedBox(height: 24),
                 ListTile(
                   onTap: () => controller.onNameTap(),
                   leading: Icon(

@@ -37,16 +37,16 @@ class HomeController extends GetxController {
     isPageViewAnimating = true;
     selectedView = newView;
     update();
-    Future.delayed( Duration(milliseconds: 200));
+    Future.delayed(const Duration(milliseconds: 200));
     if (newView == SelectedView.all) {
       await pageController.animateToPage(0,
-          duration:  Duration(milliseconds: 200), curve: Curves.ease);
+          duration: const Duration(milliseconds: 200), curve: Curves.ease);
     } else if (newView == SelectedView.read) {
       await pageController.animateToPage(1,
-          duration:  Duration(milliseconds: 200), curve: Curves.ease);
+          duration: const Duration(milliseconds: 200), curve: Curves.ease);
     } else if (newView == SelectedView.unread) {
       await pageController.animateToPage(2,
-          duration:  Duration(milliseconds: 200), curve: Curves.ease);
+          duration: const Duration(milliseconds: 200), curve: Curves.ease);
     }
     isPageViewAnimating = false;
     update();
