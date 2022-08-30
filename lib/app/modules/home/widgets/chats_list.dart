@@ -7,7 +7,7 @@ import '../controllers/home_controller.dart';
 import '../widgets/chat_list_item.dart';
 
 class ChatsList extends StatefulWidget {
-  const ChatsList({
+   ChatsList({
     Key? key,
     required this.page,
   }) : super(key: key);
@@ -18,22 +18,20 @@ class ChatsList extends StatefulWidget {
 }
 
 class _ChatsListState extends State<ChatsList> {
-
-
   @override
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(builder: (controller) {
       return StreamBuilder<List<types.Room>>(
         stream: FirebaseChatCore.instance.rooms(),
-        initialData: const [],
+        initialData:  [],
         builder:
             (BuildContext context, AsyncSnapshot<List<types.Room>> snapshot) {
-          if (snapshot.data == null) {
-            return const Center(
-              child: PrimaryText('NO CHATS'),
+          if (snapshot.data == null || snapshot.data == []) {
+            return  Center(
+              child: PrimaryText( LocaleKeys.no_chats.tr),
             );
           } else {
-            switch (controller.selectedView) {
+            switch (widget.page) {
               case SelectedView.all:
                 return ListView.builder(
                   padding: EdgeInsets.zero,

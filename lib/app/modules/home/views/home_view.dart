@@ -6,13 +6,13 @@ import '../widgets/menu_item.dart';
 import '../widgets/my_drop_down_button.dart';
 
 class HomeView extends GetView<HomeController> {
-  const HomeView({Key? key}) : super(key: key);
+   HomeView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return DefaultScreen(
       top: Center(
         child: Row(
-          children: const [
+          children:  [
             PrimaryText(
               'Chat It',
               fontSize: 20,
@@ -39,7 +39,7 @@ class HomeView extends GetView<HomeController> {
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
+                children:  [
                   MyMenuItem(
                     selectedView: SelectedView.all,
                     text: 'All',
@@ -55,8 +55,8 @@ class HomeView extends GetView<HomeController> {
                 ],
               ),
             ),
-            const SizedBox(height: 16),
-            const Expanded(
+             SizedBox(height: 16),
+             Expanded(
               child: ChatsPageView(),
             ),
           ],
@@ -66,14 +66,14 @@ class HomeView extends GetView<HomeController> {
         onPressed: () {
           Get.toNamed(Routes.USERS);
         },
-        child: const Icon(Icons.messenger_outline),
+        child:  Icon(Icons.messenger_outline),
       ),
     );
   }
 }
 
 class ChatsPageView extends GetView<HomeController> {
-  const ChatsPageView({Key? key}) : super(key: key);
+   ChatsPageView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -91,7 +91,7 @@ class ChatsPageView extends GetView<HomeController> {
           }
         }
       },
-      children: const [
+      children:  [
         ChatsList(page: SelectedView.all),
         ChatsList(page: SelectedView.read),
         ChatsList(page: SelectedView.unread),

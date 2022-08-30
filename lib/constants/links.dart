@@ -1,10 +1,10 @@
 class Links {
-  static const String baseLink =
+  static  String baseLink =
       'https://wordpress-628142-2686778.cloudwayspackage:note_it/apps.com/wp-json/ms_lms/v2';
-  static const String login = '/login';
-  static const String registerNewAccout = '/registration';
-  static const String resetPassword = '/account/restore_password';
-  static const String getCategories = '/categories';
-  static const String getCourses = '/courses';
-  static const String editProfile = '/account/edit_profile/';
+  static  String login = '/login';
+  static  String registerNewAccout = '/registration';
+  static  String resetPassword = '/account/restore_password';
+  static  String getCategories = '/categories';
+  static  String getCourses = '/courses';
+  static  String editProfile = '/account/edit_profile/';
 }

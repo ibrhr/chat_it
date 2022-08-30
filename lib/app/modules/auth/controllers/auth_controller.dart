@@ -33,7 +33,7 @@ class AuthController extends GetxController {
         metadata: {
           'email': userCredential.user!.email,
           'about': 'Hi I am using chat it!',
-          'friends': const <String, dynamic>{}
+          'friends':  <String, dynamic>{}
         },
       );
       await FirebaseChatCore.instance.createUserInFirestore(

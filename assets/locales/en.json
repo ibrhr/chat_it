@@ -1,3 +1,22 @@
 {
-    "String": "String"
+    "sign_in_button": "Sign in with Google",
+    "delete_message": "Delete Message ?",
+    "yes": "Yes",
+    "no": "No",
+    "profile":"Profile",
+    "remove_friend": "Remove Friend",
+    "enter_name":"Enter your name",
+    "enter_about":"Enter about",
+    "save": "Save",
+    "cancel": "Cancel",
+    "name": "Name",
+    "about": "About",
+    "email": "Email",
+    "delete_chat": "Delete your chat with ",
+    "no_chats": "NO CHATS",
+    "add_friend": "Add Friend",
+    "select_user": "Select User",
+    "friends": "Friends on Chat It",
+    "photo": "Photo",
+    "file": "File"
 }

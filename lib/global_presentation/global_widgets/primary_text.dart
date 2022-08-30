@@ -11,7 +11,7 @@ class PrimaryText extends StatelessWidget {
   final bool lineThrow;
   final double height;
 
-  const PrimaryText(
+   PrimaryText(
     this.text, {
     Key? key,
     this.fontSize = 13,

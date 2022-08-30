@@ -19,7 +19,7 @@ class DioHelper {
     ),
   );
 
-  static const int TIME_OUT_DURATION = 10;
+  static  int TIME_OUT_DURATION = 10;
 
   static post(
     String url, {
@@ -143,7 +143,7 @@ class DioHelper {
               headers: headers,
             ),
           )
-          .timeout(const Duration(seconds: TIME_OUT_DURATION));
+          .timeout( Duration(seconds: TIME_OUT_DURATION));
       await onSuccess(response);
     } on DioError catch (error) {
       log("Dio Error");

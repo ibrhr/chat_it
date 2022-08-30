@@ -1,7 +1,7 @@
 import '../../constants/exports.dart';
 
 class DefaultScreen extends StatelessWidget {
-  const DefaultScreen({
+   DefaultScreen({
     Key? key,
     required this.top,
     required this.bottom,
@@ -18,7 +18,7 @@ class DefaultScreen extends StatelessWidget {
           children: [
             Container(
               margin: EdgeInsets.only(top: Get.mediaQuery.padding.top),
-              padding: const EdgeInsets.all(12),
+              padding:  EdgeInsets.all(12),
               height: 60.h,
               child: top,
             ),
@@ -32,7 +32,7 @@ class DefaultScreen extends StatelessWidget {
                   ),
                 ),
                 child: ClipRRect(
-                    borderRadius: const BorderRadius.only(
+                    borderRadius:  BorderRadius.only(
                       topLeft: Radius.circular(48),
                       topRight: Radius.circular(48),
                     ),

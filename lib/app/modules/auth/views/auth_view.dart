@@ -5,7 +5,7 @@ import 'package:lottie/lottie.dart';
 import '../controllers/auth_controller.dart';
 
 class AuthView extends GetView<AuthController> {
-  const AuthView({Key? key}) : super(key: key);
+   AuthView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,7 +14,7 @@ class AuthView extends GetView<AuthController> {
         child: Center(
           child: Column(
             children: [
-              const Spacer(),
+               Spacer(),
               Image.asset('assets/icons/logo.png'),
               ElevatedButton.icon(
                 icon: SizedBox(
@@ -26,16 +26,16 @@ class AuthView extends GetView<AuthController> {
                   ),
                 ),
                 style: ElevatedButton.styleFrom(
-                    shape: const StadiumBorder(),
-                    padding: const EdgeInsets.all(14),
+                    shape:  StadiumBorder(),
+                    padding:  EdgeInsets.all(14),
                     primary: Colors.purple.shade400),
-                label: const PrimaryText(
-                  'Sign in with Google',
+                label:  PrimaryText(
+                  LocaleKeys.sign_in_button.tr,
                   fontWeight: FontWeight.w500,
                   color: Colors.white,
                   fontSize: 16,
                 ),
-                //   padding: const EdgeInsets.symmetric(vertical: 8),
+                //   padding:  EdgeInsets.symmetric(vertical: 8),
                 onPressed: () async {
                   await controller.signInWithGoogle();
                   if (controller.user != null) {
@@ -43,11 +43,11 @@ class AuthView extends GetView<AuthController> {
                   }
                 },
               ),
-              const Spacer(),
+               Spacer(),
               SizedBox(
                 height: Get.height / 3,
                 child: Padding(
-                  padding: const EdgeInsets.only(bottom: 4),
+                  padding:  EdgeInsets.only(bottom: 4),
                   child: Lottie.asset(
                     'assets/lottie/chatting.json',
                     alignment: Alignment.bottomCenter,

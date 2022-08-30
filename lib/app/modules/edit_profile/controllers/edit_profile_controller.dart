@@ -47,7 +47,7 @@ class EditProfileController extends GetxController {
 
   void onNameTap() => Get.bottomSheet(
         Container(
-          decoration: const BoxDecoration(
+          decoration:  BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(16),
@@ -55,7 +55,7 @@ class EditProfileController extends GetxController {
             ),
           ),
           child: Padding(
-            padding: const EdgeInsets.all(16),
+            padding:  EdgeInsets.all(16),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -63,8 +63,8 @@ class EditProfileController extends GetxController {
                   key: _nameFormKey,
                   child: TextFormField(
                     initialValue: name,
-                    decoration: const InputDecoration(
-                      labelText: 'Enter your name ',
+                    decoration:  InputDecoration(
+                      labelText: LocaleKeys.enter_name.tr,
                     ),
                     onSaved: (newValue) async => await _updateName(newValue!),
                   ),
@@ -78,14 +78,14 @@ class EditProfileController extends GetxController {
                         Get.back();
                       },
                       child: PrimaryText(
-                        'Save',
+                        LocaleKeys.save.tr,
                         color: ColorManager.iconColor,
                       ),
                     ),
                     TextButton(
                       onPressed: () => Get.back(),
                       child: PrimaryText(
-                        'Cancel',
+                       LocaleKeys.cancel.tr,
                         color: ColorManager.iconColor,
                       ),
                     ),
@@ -98,7 +98,7 @@ class EditProfileController extends GetxController {
       );
 
   void onAboutTap() => Get.bottomSheet(Container(
-        decoration: const BoxDecoration(
+        decoration:  BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(16),
@@ -106,7 +106,7 @@ class EditProfileController extends GetxController {
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.all(16),
+          padding:  EdgeInsets.all(16),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -115,8 +115,8 @@ class EditProfileController extends GetxController {
                 child: TextFormField(
                   initialValue: about,
                   maxLines: 3,
-                  decoration: const InputDecoration(
-                    labelText: 'Enter about ',
+                  decoration:  InputDecoration(
+                    labelText: LocaleKeys.enter_about.tr,
                   ),
                   onSaved: (newValue) async => await _updateAbout(newValue!),
                 ),
@@ -130,7 +130,7 @@ class EditProfileController extends GetxController {
                       Get.back();
                     },
                     child: PrimaryText(
-                      'Save',
+                      LocaleKeys.save.tr,
                       color: ColorManager.iconColor,
                     ),
                   ),
@@ -139,7 +139,7 @@ class EditProfileController extends GetxController {
                       Get.back();
                     },
                     child: PrimaryText(
-                      'Cancel',
+                      LocaleKeys.cancel.tr,
                       color: ColorManager.iconColor,
                     ),
                   ),

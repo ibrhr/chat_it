@@ -54,9 +54,9 @@ class ChatController extends GetxController {
                   Get.back();
                   handleImageSelection();
                 },
-                child: const Align(
+                child:  Align(
                   alignment: Alignment.centerLeft,
-                  child: Text('Photo'),
+                  child: PrimaryText(LocaleKeys.photo.tr),
                 ),
               ),
               TextButton(
@@ -64,16 +64,16 @@ class ChatController extends GetxController {
                   Get.back();
                   handleFileSelection();
                 },
-                child: const Align(
+                child:  Align(
                   alignment: Alignment.centerLeft,
-                  child: Text('File'),
+                  child: PrimaryText(LocaleKeys.file.tr),
                 ),
               ),
               TextButton(
                 onPressed: () => Get.back(),
-                child: const Align(
+                child:  Align(
                   alignment: Alignment.centerLeft,
-                  child: Text('Cancel'),
+                  child: PrimaryText(LocaleKeys.cancel.tr),
                 ),
               ),
             ],
@@ -158,8 +158,8 @@ class ChatController extends GetxController {
   void onMessageLongPress(BuildContext context, types.Message message) {
     Get.dialog(
       AlertDialog(
-        content: const PrimaryText(
-          'Delete Message ?',
+        content:  PrimaryText(
+          LocaleKeys.delete_message.tr,
           fontSize: 16,
         ),
         actionsAlignment: MainAxisAlignment.spaceAround,
@@ -169,15 +169,15 @@ class ChatController extends GetxController {
               FirebaseChatCore.instance.deleteMessage(room!.id, message.id);
               Get.back();
             },
-            child: const PrimaryText(
-              'Yes',
+            child:  PrimaryText(
+              LocaleKeys.yes.tr,
               fontSize: 14,
             ),
           ),
           ElevatedButton(
             onPressed: () => Get.back(),
-            child: const PrimaryText(
-              'No',
+            child:  PrimaryText(
+              LocaleKeys.no.tr,
               fontSize: 14,
             ),
           ),

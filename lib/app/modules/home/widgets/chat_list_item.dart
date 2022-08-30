@@ -7,7 +7,7 @@ import '../../../../constants/exports.dart';
 import '../../../routes/app_pages.dart';
 
 class ChatListItem extends GetView<HomeController> {
-  const ChatListItem({
+   ChatListItem({
     Key? key,
     required this.room,
     required this.user,
@@ -24,7 +24,7 @@ class ChatListItem extends GetView<HomeController> {
       child: InkWell(
         onLongPress: () => Get.dialog(AlertDialog(
           content: PrimaryText(
-            'Delete your chat with ${otherUser.firstName} ?',
+            '${LocaleKeys.delete_chat.tr} ${otherUser.firstName} ?',
             fontSize: 16,
           ),
           actionsAlignment: MainAxisAlignment.spaceAround,
@@ -34,15 +34,15 @@ class ChatListItem extends GetView<HomeController> {
                 FirebaseChatCore.instance.deleteRoom(room.id);
                 Get.back();
               },
-              child: const PrimaryText(
-                'Yes',
+              child:  PrimaryText(
+                 LocaleKeys.yes.tr,
                 fontSize: 14,
               ),
             ),
             ElevatedButton(
               onPressed: () => Get.back(),
-              child: const PrimaryText(
-                'No',
+              child:  PrimaryText(
+                 LocaleKeys.no.tr,
                 fontSize: 14,
               ),
             ),
@@ -53,7 +53,7 @@ class ChatListItem extends GetView<HomeController> {
           await controller.markAsRead(room);
         },
         child: Container(
-          margin: const EdgeInsets.all(8),
+          margin:  EdgeInsets.all(8),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -63,7 +63,7 @@ class ChatListItem extends GetView<HomeController> {
                   otherUser.imageUrl!,
                 ),
               ),
-              const SizedBox(
+               SizedBox(
                 width: 8,
               ),
               Expanded(

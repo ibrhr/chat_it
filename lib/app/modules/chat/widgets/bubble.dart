@@ -5,7 +5,7 @@ import 'package:chat_it/constants/exports.dart';
 import '../controllers/chat_controller.dart';
 
 class MyBubble extends GetView<ChatController> {
-  const MyBubble({
+   MyBubble({
     Key? key,
     required this.message,
     required this.nextMessageInGroup,
@@ -21,10 +21,10 @@ class MyBubble extends GetView<ChatController> {
               message.type == types.MessageType.image
           ? ColorManager.secondaryColor
           : ColorManager.backgroundColor,
-      padding: const BubbleEdges.all(0),
-      radius: const Radius.circular(16),
+      padding:  BubbleEdges.all(0),
+      radius:  Radius.circular(16),
       margin: nextMessageInGroup
-          ? const BubbleEdges.symmetric(horizontal: 6)
+          ?  BubbleEdges.symmetric(horizontal: 6)
           : null,
       nipHeight: 16,
       nipWidth: 4,

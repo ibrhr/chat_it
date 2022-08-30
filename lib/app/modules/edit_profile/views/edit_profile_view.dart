@@ -2,7 +2,7 @@ import 'package:chat_it/constants/exports.dart';
 import '../controllers/edit_profile_controller.dart';
 
 class EditProfileView extends GetView<EditProfileController> {
-  const EditProfileView({Key? key}) : super(key: key);
+   EditProfileView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return GetBuilder<EditProfileController>(
@@ -11,11 +11,11 @@ class EditProfileView extends GetView<EditProfileController> {
             children: [
               IconButton(
                 onPressed: () => Get.back(),
-                icon: const Icon(Icons.arrow_back),
+                icon:  Icon(Icons.arrow_back),
               ),
-              const SizedBox(width: 8),
-              const PrimaryText(
-                'Profile',
+               SizedBox(width: 8),
+               PrimaryText(
+                LocaleKeys.profile.tr,
                 fontSize: 20,
                 color: Colors.white,
               ),
@@ -40,8 +40,8 @@ class EditProfileView extends GetView<EditProfileController> {
                         onPressed: () async => await controller.updateImage(),
                         style: ButtonStyle(
                             shape: MaterialStateProperty.all<OutlinedBorder>(
-                                const CircleBorder())),
-                        child: const Padding(
+                                 CircleBorder())),
+                        child:  Padding(
                           padding: EdgeInsets.all(16),
                           child: Icon(
                             Icons.image_outlined,
@@ -52,7 +52,7 @@ class EditProfileView extends GetView<EditProfileController> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 24),
+                 SizedBox(height: 24),
                 ListTile(
                   onTap: () => controller.onNameTap(),
                   leading: Icon(
@@ -60,7 +60,7 @@ class EditProfileView extends GetView<EditProfileController> {
                     color: ColorManager.iconColor,
                   ),
                   title: PrimaryText(
-                    'Name',
+                    LocaleKeys.name.tr,
                     color: ColorManager.iconColor,
                   ),
                   trailing: Icon(
@@ -78,7 +78,7 @@ class EditProfileView extends GetView<EditProfileController> {
                     color: ColorManager.iconColor,
                   ),
                   title: PrimaryText(
-                    'About',
+                    LocaleKeys.about.tr,
                     color: ColorManager.iconColor,
                   ),
                   subtitle: PrimaryText(
@@ -95,7 +95,7 @@ class EditProfileView extends GetView<EditProfileController> {
                     color: ColorManager.iconColor,
                   ),
                   title: PrimaryText(
-                    'Email',
+                     LocaleKeys.email.tr,
                     color: ColorManager.iconColor,
                   ),
                   subtitle: PrimaryText(

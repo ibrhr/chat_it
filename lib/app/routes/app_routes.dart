@@ -4,20 +4,20 @@ part of 'app_pages.dart';
 
 abstract class Routes {
   Routes._();
-  static const HOME = _Paths.HOME;
-  static const AUTH = _Paths.AUTH;
-  static const EDIT_PROFILE = _Paths.EDIT_PROFILE;
-  static const CHAT = _Paths.CHAT;
-  static const USERS = _Paths.USERS;
-  static const ADD_FRIEND = _Paths.ADD_FRIEND;
+  static  HOME = _Paths.HOME;
+  static  AUTH = _Paths.AUTH;
+  static  EDIT_PROFILE = _Paths.EDIT_PROFILE;
+  static  CHAT = _Paths.CHAT;
+  static  USERS = _Paths.USERS;
+  static  ADD_FRIEND = _Paths.ADD_FRIEND;
 }
 
 abstract class _Paths {
   _Paths._();
-  static const HOME = '/home';
-  static const AUTH = '/auth';
-  static const EDIT_PROFILE = '/edit-profile';
-  static const CHAT = '/chat';
-  static const USERS = '/users';
-  static const ADD_FRIEND = '/add-friend';
+  static  HOME = '/home';
+  static  AUTH = '/auth';
+  static  EDIT_PROFILE = '/edit-profile';
+  static  CHAT = '/chat';
+  static  USERS = '/users';
+  static  ADD_FRIEND = '/add-friend';
 }
