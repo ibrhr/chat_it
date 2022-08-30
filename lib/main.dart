@@ -3,8 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'app/modules/auth/bindings/auth_binding.dart';
 import 'app/modules/auth/controllers/auth_controller.dart';
-import 'constants/exports.dart';
 import 'app/routes/app_pages.dart';
+import 'constants/exports.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

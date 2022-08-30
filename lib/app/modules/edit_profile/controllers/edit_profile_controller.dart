@@ -117,7 +117,8 @@ class EditProfileController extends GetxController {
                   maxLines: 3,
                   decoration: InputDecoration(
                     labelText: LocaleKeys.enter_about.tr,
-                    labelStyle: TextStyle(fontSize: 16.sp),
+                                          labelStyle: TextStyle(fontSize: 16.sp),
+
                   ),
                   onSaved: (newValue) async => await _updateAbout(newValue!),
                 ),
